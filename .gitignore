@@ -7,3 +7,5 @@ bin/ffprobe
 *.wav
 *.mp3
 *.mp4
+CLAUDE.md
+.claude/

@@ -131,7 +131,13 @@ def main():
                   f"consider trimming or splitting")
     first_half = np.mean(lengths[: max(1, len(lengths) // 2)])
     second_half = np.mean(lengths[len(lengths) // 2:])
-    trend = "accelerates" if second_half < first_half else "slows down"
+    ratio = second_half / first_half
+    if ratio < 0.95:
+        trend = "accelerates"
+    elif ratio > 1.05:
+        trend = "slows down"
+    else:
+        trend = "holds steady"
     print(f"  rhythm {trend} toward the end "
           f"(avg {first_half:.2f}s first half -> {second_half:.2f}s second half)")
     print()
